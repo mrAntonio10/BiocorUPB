@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BiocorInicio</title>
+</head>
+
+<body>
+	<?php
+		include("include/conf.phpinc");
+		include("include/func.phpinc");
+		include("include/dbopen.php");
+		$user= $_COOKIE['USER'];
+		$pass= $_COOKIE['PASS'];
+
+		 $sql="Select PASS,USUARIO from usuario_doctor WHERE USUARIO=\"$user\";";
+    $respuesta= query($sql);
+
+    foreach ($respuesta as $fila) {
+      $pass2=$fila['PASS'];
+      $user2=$fila['USUARIO'];
+    }
+    if($pass2!=$pass||$user!=$user2){
+    	include("include/dbclose.php");
+    	echo "<center>Usuario no encontrado: Volver atras<br>";
+    	echo "<h2><a href=\"IndexBiocor.php\"> Index inicio </a></h2> </center>";
+    }
+    else{
+    ?>
+	<h1><center>Biocor</center></h1>
+	<h2><center>Historias clinicas</center></h2>
+	<center><img src = "img/biocor.png" width="300" height= "200"></center>
+	<br>
+	<h3>Que desea realizar?</h3>
+	<form method="post" action="Biocor (2).html">
+		<input type="submit" value= "Crear nueva historia clinica" name="Crear">
+		<br>
+		<br>
+	</form>
+	<form action="Muestra.html" method="get">
+		
+		&nbsp;Id Historia Clinico
+		<input type="text" name="id_paciente" required> 
+		<input type="submit" value= "Buscar historia clinica" name="Buscar">
+	</form>
+	<?php
+	}
+	?>
+</body>
+</html>

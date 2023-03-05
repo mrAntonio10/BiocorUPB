@@ -1,0 +1,266 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BiocorCrear</title>
+</head>
+
+<body>
+	<center><h1>Creacion de historia clinica</h1></center>
+	<h2>Introduzca los datos del paciente</h2>
+	<br>
+	<h3>Datos generales</h3>
+	<style>
+		table,td{
+			border: 1px solid black;
+			
+		}
+		input{
+			border: 0px;
+		}
+	</style>
+	<form method="post" action="Envio.php">
+	<table>
+	
+		<tr bordercolor="black">
+			<td>Apellido Paterno</td>
+			<td>Apellido Materno</td>
+			<td>Nombres</td>
+		</tr>
+		<tr>
+			<td><textarea name="Apellido_P" value="hola"></textarea></td>
+			<td><textarea name="Apellido_M" ></textarea></td>
+			<td><textarea name="Nombres" ></textarea></td>
+		</tr>
+		<tr>
+			<td>Edad</td>
+			<td>Ocupacion</td>
+			<td>Direccion</td>
+		</tr>
+		<tr>
+			<td><textarea name="Edad" ></textarea></td>
+			<td><textarea name="Ocupacion" ></textarea></td>
+			<td><textarea name="Direccion" ></textarea></td>
+		</tr>
+		<tr>
+			<td>Procedencia</td>
+			<td>Fecha de Ingreso</td>
+			<td>Responsable</td>
+		</tr>
+		<tr>
+			<td><textarea name="Procedencia" ></textarea></td>
+			<td><textarea name="Fecha_I" ></textarea></td>
+			<td><textarea name="Responsable" ></textarea></td>
+		</tr>
+		<tr>
+			<td>Telefonos de Referencia</td>
+			<td><textarea name="Telefono1" ></textarea></td>
+			<td><textarea name="Telefono2" ></textarea></td>
+		</tr>
+	</table>
+	
+	<br>
+	
+	<table>
+		<tr>
+			<td>Antecedentes Patologicos</td>
+			<td>Alergias y otras Reacciones</td>
+		</tr>
+		<tr>
+			<td><textarea name="Antecedentes_P" style="height: 50px; width: 400px;"></textarea></td>
+			<td><textarea name="Alergias" style="height: 50px; width: 400px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Enfermedad Actual</td>
+			<td>Historia Familiar</td>
+		</tr>
+		<tr>
+			<td><textarea name="Enfermedad_A" style="height: 50px; width: 400px;"></textarea></td>
+			<td><textarea name="Historia_F" style="height: 50px; width: 400px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Antecedentes gineco-obstetricos (si es necesario)</td>
+			<td>Medicacion Habitual</td>
+		</tr>
+	  <tr>
+			<td><textarea name="Antecedentes_G" style="height: 50px; width: 400px;"></textarea></td>
+			<td><textarea name="Medicacion_H" style="height: 50px; width: 400px;"></textarea></td>
+	  </tr>
+		<tr>
+			<td>Tabaco</td>
+			<td>Cafeina</td>
+		</tr>
+		<tr>
+			<td><textarea name="Tabaco" style="height: 15px; width: 400px;"></textarea></td>
+			<td><textarea name="Cafeina" style="height: 15px; width: 400px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Alcohol</td>
+			<td>Otros</td>
+		</tr>
+		<tr>
+			<td><textarea name="Alcohol" style="height: 15px; width: 400px;"></textarea></td>
+			<td><textarea name="Otros" style="height: 15px; width: 400px;"></textarea></td>
+		</tr>
+	</table>
+	
+	<br>
+	
+	<h3>Revision por sistemas</h3>
+	
+	<table>
+		<tr>
+			<td>Cardiovascular</td>
+			<td><textarea name="Cardiovascular" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Respiratorio</td>
+			<td><textarea name="Respiratorio" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Gatrointestinal</td>
+			<td><textarea name="Gatrointestinal" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Genitourinario</td>
+			<td><textarea name="Genitourinario" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Musculoesqueletico</td>
+			<td><textarea name="Musculoesqueletico" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Neurologico</td>
+			<td><textarea name="Neurologico" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Endocrinologico</td>
+			<td><textarea name="Endocrinologico" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Hemotologico</td>
+			<td><textarea name="Hemotologico" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Inmuno-alergico-infeccioso</td>
+			<td><textarea name="Inmuno_alergico_infeccioso" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Piel y Faneras</td>
+			<td><textarea name="Piel_y_Faneras" style="height: 60px; width: 200px;"></textarea></td>
+		</tr>
+	</table>
+	
+	<br>
+	
+	<h3>Signos vitales</h3>
+	
+	<table>
+		<tr>
+			<td>PA</td>
+			<td>Pulso</td>
+			<td>T</td>
+			<td>FR</td>
+		</tr>
+		<tr>
+			<td><textarea name="PA" ></textarea></td>
+			<td><textarea name="Pulso" ></textarea></td>
+			<td><textarea name="T" ></textarea></td>
+			<td><textarea name="FR" ></textarea></td>
+		</tr>
+		<tr>
+			<td>FC</td>
+			<td>Peso</td>
+			<td>Peso</td>
+			<td>Sexo</td>
+		</tr>
+		<tr>
+			<td><textarea name="FC" ></textarea></td>
+			<td><textarea name="Peso1" ></textarea></td>
+			<td><textarea name="Peso2" ></textarea></td>
+			<td><textarea name="Sexo" ></textarea></td>
+		</tr>
+	</table>
+	
+	<br>
+	
+	<h3>Caracteristicas Generales</h3>
+	
+	<table>
+		<tr>
+			<td>Dentro de lo Normal</td>
+			<td>Caracteristicas Generales</td>
+			<td>Hallazgos (cuando no se encuentran dentro de lo normal) Examenes de espacialidad (Ej: Ginecologicos, urologicos, proctocologicos)</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Piel</td>
+			<td><textarea name="Piel" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Cabeza y cuello</td>
+			<td><textarea name="Cabeza_y_cuello" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Senos</td>
+			<td><textarea name="Senos" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Respiratorio</td>
+			<td><textarea name="Respiratorio" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Cardiovascular</td>
+			<td><textarea name="Cardiovascular" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>Abdomen</td>
+			<td><textarea name="Abdomen" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>Musculoesqueletico</td>
+			<td><textarea name="Musculoesqueletico" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>Neurologico</td>
+			<td><textarea name="Neurologico" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>Genitourinario</td>
+			<td><textarea name="Genitourinario" style="height: 100px; width: 900px;"></textarea></td>
+		</tr>
+	</table>
+	
+	<br>
+	
+	<table style="width: 500px;">
+		<tr>
+			<td>Diagnostico</td>
+		</tr>
+		<tr>
+			<td><textarea name="Diagnostico" style="height: 100px; width: 500px;"></textarea></td>
+		</tr>
+		<tr>
+			<td>Plan</td>
+		</tr>
+		<tr>
+			<td><textarea name="Plan" style="height: 100px; width: 500px;"></textarea></td>
+		</tr>
+	</table>
+	<br>
+	<input type="submit" value="Crear historia clinica" name="Crear" style="width: 500px; height: 70px;" >
+	<br>
+	<br>
+</form>
+</body>
+
+</html>

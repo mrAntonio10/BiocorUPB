@@ -1,0 +1,413 @@
+<?php
+ob_start();
+?>
+<!doctype html>
+<html lang="eng">
+<head>
+<meta charset="utf-8">
+<title>BiocorMostrar</title>
+</head>
+
+<body>
+
+
+<?php
+include("include/func.phpinc");
+include("include/dbopen.php");
+$id=$_GET['id_paciente'];
+
+
+$sql="Select * from DATOS_PACIENTE where ID_PACIENTE = {$id};";
+
+$respuesta = query($sql);
+
+  
+     foreach ($respuesta as $fila) {
+    
+      $Nombres=$fila['NOMBRE'];
+      $Apellido_p=$fila['APELLIDO_PATERNO'];
+      $Apellido_m=$fila['APELLIDO_MATERNO'];
+      $Edad=$fila['EDAD'];
+      $Ocupacion=$fila['OCUPACION'];
+      $Direccion=$fila['DIRECCION'];
+      $Procedencia=$fila['PROCEDENCIA'];
+      $Fecha_i=$fila['FECHA_INGRESO'];
+      $Responsable=$fila['RESPONSABLE'];
+      $Telefono1=$fila['TELEFONO1'];
+      $Telefono2=$fila['TELEFONO2'];
+
+     }
+
+	echo "<center><h1>Historia Clinica de $Nombres $Apellido_p $Apellido_m</h1></center>
+	<h2>ID Historial clinico: $id</h2>
+	<br>
+	<h3>Datos generales</h3>
+	<style>
+		table,td{
+			border: 1px solid black;
+			
+		}
+		input{
+			border: 0px;
+		}
+	</style>
+	<form method=\"post\" action=\"Envio.php\">
+	<table>
+	
+		<tr bordercolor=\"black\">
+			<td>Apellido Paterno</td>
+			<td>Apellido Materno</td>
+			<td>Nombres</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Apellido_P\" > $Apellido_p </textarea></td>
+			<td><textarea name=\"Apellido_M\" >$Apellido_m</textarea></td>
+			<td><textarea name=\"Nombres\" >$Nombres</textarea></td>
+		</tr>
+		<tr>
+			<td>Edad</td>
+			<td>Ocupacion</td>
+			<td>Direccion</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Edad\" >$Edad</textarea></td>
+			<td><textarea name=\"Ocupacion\" >$Ocupacion</textarea></td>
+			<td><textarea name=\"Direccion\" >$Direccion</textarea></td>
+		</tr>
+		<tr>
+			<td>Procedencia</td>
+			<td>Fecha de Ingreso</td>
+			<td>Responsable</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Procedencia\" >$Procedencia</textarea></td>
+			<td><textarea name=\"Fecha_I\" >$Fecha_i</textarea></td>
+			<td><textarea name=\"Responsable\" >$Responsable</textarea></td>
+		</tr>
+		<tr>
+			<td>Telefonos de Referencia</td>
+			<td><textarea name=\"Telefono1\" >$Telefono1</textarea></td>
+			<td><textarea name=\"Telefono2\" >$Telefono2</textarea></td>
+		</tr>
+	</table>";
+
+	$sql2="Select * from ANTECEDENTES_PACIENTE where ID_PACIENTE = {$id};";
+
+$respuesta2 = query($sql2);
+
+	foreach ($respuesta2 as $fila2) {
+    
+      $ante_pato=$fila2['ANTECEDENTES_PATOLOGICOS'];
+      $alergias_y=$fila2['ALERGIAS_Y_OTRAS_REACCIONES'];
+      $enfermedad_a=$fila2['ENFERMEDAD_ACTUAL'];
+      $historia_f=$fila2['HISTORIAL_FAMILIAR'];
+      $antecedentes_gine=$fila2['ANTECEDENTES_GINECO_OBSTETRICOS'];
+      $tabaco=$fila2['TABACO'];
+      $cafeina=$fila2['CAFEINA'];
+      $alcohol=$fila2['ALCOHOL'];
+      $otros=$fila2['OTROS'];
+      $medicacion_a=$fila2['MEDICACION_ACTUAL'];
+
+     }
+
+
+echo "
+
+	<br>
+	<br><br><br><br><br><br>
+	<table>
+		<tr>
+			<td>Antecedentes Patologicos</td>
+			<td>Alergias y otras Reacciones</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Antecedentes_P\" style=\"height: 50px; width: 400px;\">$ante_pato</textarea></td>
+			<td><textarea name=\"Alergias\" style=\"height: 50px; width: 400px;\">$alergias_y</textarea></td>
+		</tr>
+		<tr>
+			<td>Enfermedad Actual</td>
+			<td>Historia Familiar</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Enfermedad_A\" style=\"height: 50px; width: 400px;\">$enfermedad_a</textarea></td>
+			<td><textarea name=\"Historia_F\" style=\"height: 50px; width: 400px;\">$historia_f</textarea></td>
+		</tr>
+		<tr>
+			<td>Antecedentes gineco-obstetricos (si es necesario)</td>
+			<td>Medicacion Habitual</td>
+		</tr>
+	  <tr>
+			<td><textarea name=\"Antecedentes_G\" style=\"height: 50px; width: 400px;\">$antecedentes_gine</textarea></td>
+			<td><textarea name=\"Medicacion_H\" style=\"height: 50px; width: 400px;\">$medicacion_a</textarea></td>
+	  </tr>
+		<tr>
+			<td>Tabaco</td>
+			<td>Cafeina</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Tabaco\" style=\"height: 15px; width: 400px;\">$tabaco</textarea></td>
+			<td><textarea name=\"Cafeina\" style=\"height: 15px; width: 400px;\">$cafeina</textarea></td>
+		</tr>
+		<tr>
+			<td>Alcohol</td>
+			<td>Otros</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Alcohol\" style=\"height: 15px; width: 400px;\">$alcohol</textarea></td>
+			<td><textarea name=\"Otros\" style=\"height: 15px; width: 400px;\">$otros</textarea></td>
+		</tr>
+	</table>
+	";
+
+	$sql3="Select * from REVISION_POR_SISTEMAS_PACIENTE where ID_PACIENTE = {$id};";
+
+$respuesta3 = query($sql3);
+
+	foreach ($respuesta3 as $fila) {
+    
+      $CARDIOVASCULAR=$fila['CARDIOVASCULAR'];
+      $RESPIRATORIO=$fila['RESPIRATORIO'];
+      $GASTROINTESTINAL=$fila['GASTROINTESTINAL'];
+      $MUSCULOESQUELETICO=$fila['MUSCULOESQUELETICO'];
+      $NEURLOGICO=$fila['NEURLOGICO'];
+      $ENDOCRINOLOGICO=$fila['ENDOCRINOLOGICO'];
+      $HEMOTOLOGICO=$fila['HEMOTOLOGICO'];
+      $INMUNO_ALERGICO_INFECCIOSOS=$fila['INMUNO_ALERGICO_INFECCIOSOS'];
+      $PIEL_Y_FANERA=$fila['PIEL_Y_FANERA'];
+
+     }
+
+	
+echo "
+
+	<h3>Revision por sistemas</h3>
+	
+	<table>
+		<tr>
+			<td>Cardiovascular</td>
+			<td><textarea name=\"Cardiovascular\" style=\"height: 60px; width: 200px;\">$CARDIOVASCULAR</textarea></td>
+		</tr>
+		<tr>
+			<td>Respiratorio</td>
+			<td><textarea name=\"Respiratorio\" style=\"height: 60px; width: 200px;\">$RESPIRATORIO</textarea></td>
+		</tr>
+		<tr>
+			<td>Gatrointestinal</td>
+			<td><textarea name=\"Gatrointestinal\" style=\"height: 60px; width: 200px;\">$GASTROINTESTINAL</textarea></td>
+		</tr>
+		<tr>
+			<td>Genitourinario</td>
+			<td><textarea name=\"Genitourinario\" style=\"height: 60px; width: 200px;\">$NEURLOGICO</textarea></td>
+		</tr>
+		<tr>
+			<td>Musculoesqueletico</td>
+			<td><textarea name=\"Musculoesqueletico\" style=\"height: 60px; width: 200px;\">$MUSCULOESQUELETICO</textarea></td>
+		</tr>
+		<tr>
+			<td>Neurologico</td>
+			<td><textarea name=\"Neurologico\" style=\"height: 60px; width: 200px;\">$NEURLOGICO</textarea></td>
+		</tr>
+		<tr>
+			<td>Endocrinologico</td>
+			<td><textarea name=\"Endocrinologico\" style=\"height: 60px; width: 200px;\">$ENDOCRINOLOGICO</textarea></td>
+		</tr>
+		<tr>
+			<td>Hemotologico</td>
+			<td><textarea name=\"Hemotologico\" style=\"height: 60px; width: 200px;\">$HEMOTOLOGICO</textarea></td>
+		</tr>
+		<tr>
+			<td>Inmuno-alergico-infeccioso</td>
+			<td><textarea name=\"Inmuno_alergico_infeccioso\" style=\"height: 60px; width: 200px;\">$INMUNO_ALERGICO_INFECCIOSOS</textarea></td>
+		</tr>
+		<tr>
+			<td>Piel y Faneras</td>
+			<td><textarea name=\"Piel_y_Faneras\" style=\"height: 60px; width: 200px;\">$PIEL_Y_FANERA</textarea></td>
+		</tr>
+	</table>
+	";
+	
+
+	$sql4="Select * from SIGNOS_VITALES_PACIENTE where ID_PACIENTE = {$id};";
+
+$respuesta4 = query($sql4);
+
+	foreach ($respuesta4 as $fila) {
+    
+      $PA=$fila['PA'];
+      $PULSO=$fila['PULSO'];
+      $T=$fila['T'];
+      $FR=$fila['FR'];
+      $FC=$fila['FC'];
+      $PESO1=$fila['PESO1'];
+      $PESO2=$fila['PESO2'];
+      $SEXO=$fila['SEXO'];
+
+     }
+	
+echo "
+	<br>
+	<br><br<br><br><br>
+	<h3>Signos vitales</h3>
+	
+	<table>
+		<tr>
+			<td>PA</td>
+			<td>Pulso</td>
+			<td>T</td>
+			<td>FR</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"PA\" >$PA</textarea></td>
+			<td><textarea name=\"Pulso\" >$PULSO</textarea></td>
+			<td><textarea name=\"T\" >$T</textarea></td>
+			<td><textarea name=\"FR\" >$FR</textarea></td>
+		</tr>
+		<tr>
+			<td>FC</td>
+			<td>Peso</td>
+			<td>Peso</td>
+			<td>Sexo</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"FC\" >$FC</textarea></td>
+			<td><textarea name=\"Peso1\" >$PESO1</textarea></td>
+			<td><textarea name=\"Peso2\" >$PESO2</textarea></td>
+			<td><textarea name=\"Sexo\" >$SEXO</textarea></td>
+		</tr>
+	</table>
+	";
+
+	$sql5="Select * from CARACTERISTICAS_GENERALES_PACIENTE where ID_PACIENTE = {$id};";
+
+$respuesta5 = query($sql5);
+
+	foreach ($respuesta5 as $fila) {
+    
+      $PIEL=$fila['PIEL'];
+      $CABEZA_Y_CUELLO=$fila['CABEZA_Y_CUELLO'];
+      $SENOS=$fila['SENOS'];
+      $RESPIRATORIO=$fila['RESPIRATORIO'];
+      $CARDIOVASCULAR=$fila['CARDIOVASCULAR'];
+      $ABDOMEN=$fila['ABDOMEN'];
+      $MUSCULOESQUELETICO=$fila['MUSCULOESQUELETICO'];
+      $NEUROLOGICO=$fila['NEUROLOGICO'];
+      $GENITOURINARIO=$fila['GENITOURINARIO'];
+
+     }
+
+	echo "
+	<br>
+	
+	<h3>Caracteristicas Generales</h3>
+	
+	<table>
+		<tr>
+			<td>Dentro de lo Normal</td>
+			<td>Caracteristicas Generales</td>
+			<td>Hallazgos (cuando no se encuentran dentro de lo normal) Examenes de espacialidad (Ej: Ginecologicos, urologicos, proctocologicos)</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Piel</td>
+			<td><textarea name=\"Piel\" style=\"height: 100px; width: 900px;\">$PIEL</textarea></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Cabeza y cuello</td>
+			<td><textarea name=\"Cabeza_y_cuello\" style=\"height: 100px; width: 900px;\">$CABEZA_Y_CUELLO</textarea></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Senos</td>
+			<td><textarea name=\"Senos\" style=\"height: 100px; width: 900px;\">$SENOS</textarea></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Respiratorio</td>
+			<td><textarea name=\"Respiratorio\" style=\"height: 100px; width: 900px;\">$RESPIRATORIO</textarea></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Cardiovascular</td>
+			<td><textarea name=\"Cardiovascular\" style=\"height: 100px; width: 900px;\">$CARDIOVASCULAR</textarea></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>Abdomen</td>
+			<td><textarea name=\"Abdomen\" style=\"height: 100px; width: 900px;\"></textarea>$ABDOMEN</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>Musculoesqueletico</td>
+			<td><textarea name=\"Musculoesqueletico\" style=\"height: 100px; width: 900px;\">$MUSCULOESQUELETICO</textarea></td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>Neurologico</td>
+			<td><textarea name=\"Neurologico\" style=\"height: 100px; width: 900px;\">$NEUROLOGICO</textarea></td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>Genitourinario</td>
+			<td><textarea name=\"Genitourinario\" style=\"height: 100px; width: 900px;\">$GENITOURINARIO</textarea></td>
+		</tr>
+	</table>
+	";
+
+	$sql6="Select * from DIACNOSTICO_Y_TRATAMIENTO_PACIENTE where ID_PACIENTE = {$id};";
+
+$respuesta6 = query($sql6);
+
+	foreach ($respuesta6 as $fila) {
+    
+      $Diacnostico=$fila['DIACNOSTICO'];
+      $Plan=$fila['PLAN'];
+
+     }
+     	$DateAndTime = date('m-d-Y');  
+
+     echo "
+	<br>
+
+	<table style=\"width: 500px;\">
+		<tr>
+			<td>Diagnostico</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Diagnostico\" style=\"height: 100px; width: 500px;\">$Diacnostico</textarea></td>
+		</tr>
+		<tr>
+			<td>Plan</td>
+		</tr>
+		<tr>
+			<td><textarea name=\"Plan\" style=\"height: 100px; width: 500px;\">$Plan</textarea></td>
+		</tr>
+	</table>
+	<br>
+	 Fecha: $DateAndTime
+	<br>
+	<br>
+	
+</form>
+</body>
+</html>
+";
+$html=ob_get_clean();
+require_once 'libreria/dompdf/autoload.inc.php';
+
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$dompdf->loadHtml($html);
+
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('A4', 'landscape');
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$dompdf->stream("$Nombres$Apellido_p".'_'."$id", array("Attachment"  => false));
+?>

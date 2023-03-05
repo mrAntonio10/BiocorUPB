@@ -1,0 +1,35 @@
+
+input{
+    font-size: 20px;
+    text-align: center;
+}
+select{
+       font-size: 18px;
+    text-align: center;
+}
+table{
+    font-size: 30px;
+    text-align: center;
+}
+img{
+    border-color: black;
+    border-radius: 40px;
+    border-spacing: 0%;
+}
+.ventana{
+    background-color: 0B8326;
+    background-repeat: no-repeat;
+    padding: 33px;
+    min-height: 250px;
+    border-radius: 22px;
+    position: fixed;
+    left: 40%;
+    top: 22%;
+    display: none;
+    color: white
+}
+#cerrar{
+    position: absolute;
+    right: 3px;
+    top: 1px;
+}
